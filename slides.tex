@@ -1,0 +1,139 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\title{Unconventional reinforcement learning on traffic lights with SUMO}
+\subtitle{Master Degree in Computer Science}
+\author{Refolli~F.~865955}
+\logo{\includegraphics[height=1cm]{logo_unimib.pdf}}
+
+\newcommand{\putimage}[2] {
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#2\linewidth]{#1}
+	\end{figure}
+}
+
+\newcommand{\putimagecouple}[4] {
+  \begin{figure}[!htb]
+    \centering
+    \begin{minipage}{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{#1}
+      \caption{#2}
+    \end{minipage}
+    \hspace{0.25cm}
+    \begin{minipage}{0.45\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{#3}
+      \caption{#4}
+    \end{minipage}
+  \end{figure}
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Traffic and Simulations}
+\begin{frame}
+\frametitle{Traffic Congestion}
+\end{frame}
+
+\begin{frame}
+\frametitle{SUMO}
+\end{frame}
+
+\begin{frame}
+\frametitle{SUMO-RL}
+\end{frame}
+
+\section{\textbf{RO 1}: Acquiring a baseline}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 1.1}: Which is the best implemented reward function?
+\item \textbf{RQ 1.2}: Which is the best implemented observation function?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 2}: Evaluating the effectiveness of Curriculum Learning}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 2.1}: Does curriculum learning leads to better running performances?
+\item \textbf{RQ 2.2}: Is there a loss of knowledge due to curriculum learning not being exhaustive?
+\item \textbf{RQ 2.3}: Does adding disruption episodes in the training set enable agents to tackle problematic conditions?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 3}: Comparing Deep Learning with Tabular Learning}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 3.1}: Which is the best implemented tabular agent?
+\item \textbf{RQ 3.2}: Which is the best implemented neural agent?
+\item \textbf{RQ 3.3}: Is Deep Learning worth its cost?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 4}: Comparing Reinforcement Learning with existing solutions}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 4.1}: What is the impact of cycle time in Fixed Cycle Agents?
+\item \textbf{RQ 4.2}: Are RL Agents an improvement over non-AI solutions?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 5}: Evaluating the impact of determinism over performances}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 5.1}: Is non-determinism helping the agents?
+\item \textbf{RQ 5.2}: Locking determinism does cause a significant drop in performance?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 6}: Evaluating the impact of quantization over performances}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 6.1}: Do agents benefit from a small quantization?
+\item \textbf{RQ 6.2}: Do continuous-space agents benefit from disabling quantization?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 7}: Comparing Multi-Agent Learning with Single-Agent Learning}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 7.1}: Does sharing rewards to neighbour agents improve globally the solution?
+\item \textbf{RQ 7.2}: Does sharing observations to neighbour agents improve globally the solution?
+\end{itemize}
+\end{frame}
+
+\section{\textbf{RO 8}: Evaluating the effectiveness of Self-Adaptive strategies}
+\begin{frame}
+\frametitle{Research Questions}
+\begin{itemize}
+\item \textbf{RQ 8.1}: Can a reinforcement learning system be designed to update itself as needed?
+\item \textbf{RQ 8.2}: Is the self-adaptive system improving performance over time?
+\item \textbf{RQ 8.3}: Is the self-adaptive system updating as intended?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering
+\Huge
+Thank You
+\end{frame}
+
+\end{document}

@@ -1,0 +1,49 @@
+block
+columns 1
+    block
+        Config
+        CLI
+        Scenario
+    end
+    block
+        AgentFactory
+        VisionGraph
+    end
+    block
+        Agent
+        ObservationFunction
+        RewardFunction
+    end
+    block
+        Datastore
+        Environment
+        TrafficSignal
+    end
+    block
+        SUMO
+        TraCI
+    end
+
+    CLI --- Config
+    CLI --- Scenario
+
+    CLI --- AgentFactory
+    CLI --- VisionGraph
+
+    ObservationFunction --- VisionGraph
+    RewardFunction --- VisionGraph
+
+    AgentFactory --- Agent
+
+    Agent --- Environment
+
+    Environment --- Datastore
+    Environment --- TrafficSignal
+
+    ObservationFunction --- Environment
+    RewardFunction --- Environment
+
+    Environment --- TraCI
+    TrafficSignal --- TraCI
+
+    TraCI --- SUMO

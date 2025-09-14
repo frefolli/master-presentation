@@ -1,0 +1,25 @@
+@startuml
+!theme spacelab
+CLI -left- Config
+CLI -right- Scenario
+
+CLI -down- AgentFactory
+CLI -down- VisionGraph
+
+VisionGraph -down- ObservationFunction
+VisionGraph -down- RewardFunction
+
+AgentFactory -- Agent
+
+Agent -- Environment
+
+Environment -left- Datastore
+Environment -right- TrafficSignal
+
+ObservationFunction -- Environment
+RewardFunction -- Environment
+
+Environment -- TraCI
+TrafficSignal -- TraCI
+TraCI -left- SUMO
+@enduml

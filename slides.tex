@@ -6,7 +6,7 @@
 \usecolortheme{beaver}
 \date[26 September 2025]{}
 
-\title[Patrick, we fixed traffic!]{Unconventional reinforcement learning on traffic lights with SUMO}
+\title[We did it Patrick! We fixed traffic!]{Unconventional reinforcement learning on traffic lights with SUMO}
 \subtitle{Master Degree in Computer Science}
 % \author{Refolli~F.~865955}
 \author[RF 865955]{Francesco~Refolli\\[10mm]{\small Supervisor: Prof. Giuseppe Vizzari}}
@@ -106,22 +106,86 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{The Observation Functions}
+\frametitle{The Global State}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/sumo-rf-properties.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{The Reward Functions}
+\frametitle{Observing and Rewarding}
+  \begin{columns}
+  \begin{column}{0.4\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/sumo-rf-observations.png}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.6\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/sumo-rf-rewards.png}
+    \end{figure}
+  \end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{The Dataset}
-  \begin{small}
-    \begin{verbatim}
-    TOK = (£|\*|~|%(,[0-9.]+)?(,[0-9.]+)?|[A-Z][A-Z0-9]+)
-    EXP = ^([0-9]+,)?([0-9]+,)?TOK(,TOK)*$
-    \end{verbatim}
-  \end{small}
+\begin{frame}
+\frametitle{Multi Agent Learning and "Shared-Views"}
+
+  {\small
+  No agent is isoled, they are all part of a whole and they influence each other with their own behaviour.
+  What if an agent can \textit{sense} its surrounding area by sharing observations with neighbours? 
+  What if an agent is \textit{rewarded} for its influence on surrounding area by sharing rewards with neighbours?}
+
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-1.png}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-2.png}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-3.png}
+      \end{figure}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.35\textwidth]{figures/sumo-rf-tls-4.png}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.35\textwidth]{figures/sumo-rf-tls-5.png}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
+
+\begin{frame}
+\frametitle{Experience Engineering}
+\end{frame}
+
+%[fragile]
+% \begin{small}
+%   \begin{verbatim}
+%   TOK = (£|\*|~|%(,[0-9.]+)?(,[0-9.]+)?|[A-Z][A-Z0-9]+)
+%   EXP = ^([0-9]+,)?([0-9]+,)?TOK(,TOK)*$
+%   \end{verbatim}
+% \end{small}
 
 \begin{frame}
 \centering

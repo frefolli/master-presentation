@@ -6,7 +6,7 @@
 \usecolortheme{beaver}
 \date[26 September 2025]{}
 
-\title{Unconventional reinforcement learning on traffic lights with SUMO}
+\title[Patrick, we fixed traffic!]{Unconventional reinforcement learning on traffic lights with SUMO}
 \subtitle{Master Degree in Computer Science}
 % \author{Refolli~F.~865955}
 \author[RF 865955]{Francesco~Refolli\\[10mm]{\small Supervisor: Prof. Giuseppe Vizzari}}
@@ -86,18 +86,31 @@
 
 \begin{frame}
 \frametitle{The Agent Model}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+    {\small
+    \begin{itemize}
+      \item Each agent can control one intersection and at each step (every 5 seconds) it can choose the next phase of the intersection.
+      \item Every action is automatically enforced by TrafficSignal with also an intermediate yellow phase.
+      \item It receives an observation of the current condition and a reward proportional to the goodness of its behaviour.
+      \item If the agent is "smart", it uses the collected data to improve itself!
+    \end{itemize}}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/sumo-rf-agent.png}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
-\frametitle{The Observation Function}
+\frametitle{The Observation Functions}
 \end{frame}
 
 \begin{frame}
-\frametitle{The Reward Function}
-\end{frame}
-
-\begin{frame}
-\frametitle{The Action Space}
+\frametitle{The Reward Functions}
 \end{frame}
 
 \begin{frame}[fragile]

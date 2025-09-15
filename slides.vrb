@@ -1,0 +1,7 @@
+\frametitle{The Dataset}
+  \begin{small}
+    \begin{verbatim}
+    TOK = (£|\*|~|%(,[0-9.]+)?(,[0-9.]+)?|[A-Z][A-Z0-9]+)
+    EXP = ^([0-9]+,)?([0-9]+,)?TOK(,TOK)*$
+    \end{verbatim}
+  \end{small}

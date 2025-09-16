@@ -156,10 +156,13 @@
 \begin{frame}
 \frametitle{Multi Agent Learning}
 
-  {\small
-  No agent is isoled, they are all part of a whole and they influence each other with their own behaviour. \\
-  What if an agent can \textit{sense} its surrounding area by sharing observations with neighbours? \\
-  What if an agent is \textit{rewarded} for its influence on surrounding area by sharing rewards with neighbours?}
+  {\footnotesize
+  \begin{itemize}
+    \item No agent is isoled, they are all part of a whole and they influence each other with their own behaviour.
+    \item What if an agent can \textit{sense} its surrounding area by sharing observations with neighbours?
+    \item What if an agent is \textit{rewarded} for its influence on surrounding area by sharing rewards with neighbours?
+  \end{itemize}
+  }
 
   \begin{columns}
     \begin{column}{0.3\textwidth}
@@ -200,11 +203,13 @@
 \begin{frame}
 \frametitle{Observation sharing}
 
+  {\footnotesize
   \begin{itemize}
     \item The state $S$ of an agent is computed through two dinstict observation functions $f_{int}, f_{ext}$ meaning respectively the internal state and external state. \\
     \item The state of an agent $x$ is a concatenation of $f_{int}(x)$ and $f_{ext}(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours. \\
-    \item By default, $f_{int}$ is the Density function which is the one that without sharing gives best results.
+    \item It ws chosen to use the Density function as $f_{int}$ because, among the observation functions where the agent can only see itself, it produced the best results.
   \end{itemize}
+  }
 
   Example:
   \begin{figure}
@@ -228,10 +233,12 @@
 \begin{frame}
 \frametitle{Reward sharing}
 
+  {\footnotesize
   \begin{itemize}
     \item The reward $R$ of an agent is computed through one single reward function $f$ representing the condition of an intersection. \\
     \item The state of an agent $x$ is a sum of $f(x)$ and $f(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours. \\
   \end{itemize}
+  }
 
   Example:
   \begin{figure}

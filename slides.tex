@@ -1,4 +1,5 @@
-\documentclass{beamer}
+\documentclass[dvipsnames]{beamer}
+\usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{listings}
 
@@ -47,8 +48,23 @@
 \tableofcontents
 \end{frame}
 
+\section{Introduction}
+
 \begin{frame}
-  \frametitle{Research Objectives}
+  \frametitle{Problem statement}
+
+  This thesis dealt with the Traffic Light Control problem (TCL) applying uncommon reinforcement learning techniques.
+  In particular, the following research objective were pursuit in the performed experiments:
+
+  \begin{itemize}
+    \item \textcolor{SeaGreen}{Evaluating the effectiveness of Curriculum Learning}
+    \item \textcolor{SeaGreen}{Evaluating the effectiveness of Multi Agent Learning}
+    \item \textcolor{CadetBlue}{Evaluating the effectiveness of Self-Adaptive agents}
+    \item \textcolor{CadetBlue}{Comparing observation/reward functions}
+    \item \textcolor{CadetBlue}{Comparing tabular and deep learning models}
+    \item \textcolor{CadetBlue}{Comparing Reinforcement Learning with existing solutions}
+    \item \textcolor{CadetBlue}{Evaluating the role of hyperparameters}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -135,31 +151,33 @@
 \end{columns}
 \end{frame}
 
+\section{Multi Agent Learning}
+
 \begin{frame}
-\frametitle{Multi Agent Learning and "Shared-Views"}
+\frametitle{Multi Agent Learning}
 
   {\small
-  No agent is isoled, they are all part of a whole and they influence each other with their own behaviour.
-  What if an agent can \textit{sense} its surrounding area by sharing observations with neighbours? 
+  No agent is isoled, they are all part of a whole and they influence each other with their own behaviour. \\
+  What if an agent can \textit{sense} its surrounding area by sharing observations with neighbours? \\
   What if an agent is \textit{rewarded} for its influence on surrounding area by sharing rewards with neighbours?}
 
   \begin{columns}
     \begin{column}{0.3\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-1.png}
+        \includegraphics[width=0.65\textwidth]{figures/sumo-rf-tls-1.png}
       \end{figure}
     \end{column}
     \begin{column}{0.3\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-2.png}
+        \includegraphics[width=0.65\textwidth]{figures/sumo-rf-tls-2.png}
       \end{figure}
     \end{column}
     \begin{column}{0.3\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-3.png}
+        \includegraphics[width=0.65\textwidth]{figures/sumo-rf-tls-3.png}
       \end{figure}
     \end{column}
   \end{columns}
@@ -167,17 +185,74 @@
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=0.35\textwidth]{figures/sumo-rf-tls-4.png}
+        \includegraphics[width=0.30\textwidth]{figures/sumo-rf-tls-4.png}
       \end{figure}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=0.35\textwidth]{figures/sumo-rf-tls-5.png}
+        \includegraphics[width=0.30\textwidth]{figures/sumo-rf-tls-5.png}
       \end{figure}
     \end{column}
   \end{columns}
 \end{frame}
+
+\begin{frame}
+\frametitle{Observation sharing}
+
+  \begin{itemize}
+    \item The state $S$ of an agent is computed through two dinstict observation functions $f_{int}, f_{ext}$ meaning respectively the internal state and external state. \\
+    \item The state of an agent $x$ is a concatenation of $f_{int}(x)$ and $f_{ext}(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours. \\
+    \item By default, $f_{int}$ is the Density function which is the one that without sharing gives best results.
+  \end{itemize}
+
+  Example:
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-triplet.png}
+  \end{figure}
+
+  
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \centering
+      {\footnotesize$S({TLS}_{1}) = f_{int}({TLS}_{1}) \bullet f_{ext}({TLS}_{2})$}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \centering
+      {\footnotesize$S({TLS}_{2}) = f_{int}({TLS}_{2}) \bullet f_{ext}({TLS}_{1}) \bullet f_{ext}({TLS}_{3})$}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Reward sharing}
+
+  \begin{itemize}
+    \item The reward $R$ of an agent is computed through one single reward function $f$ representing the condition of an intersection. \\
+    \item The state of an agent $x$ is a sum of $f(x)$ and $f(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours. \\
+  \end{itemize}
+
+  Example:
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/sumo-rf-tls-triplet.png}
+  \end{figure}
+
+  
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \centering
+      {\footnotesize$R({TLS}_{1}) = f({TLS}_{1}) + f({TLS}_{2})$}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \centering
+      {\footnotesize$R({TLS}_{2}) = f({TLS}_{2}) + f({TLS}_{1}) + f({TLS}_{3})$}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Curriculum Learning}
 
 \begin{frame}
 \frametitle{Experience Engineering}
@@ -194,6 +269,8 @@
 %   EXP = ^([0-9]+,)?([0-9]+,)?TOK(,TOK)*$
 %   \end{verbatim}
 % \end{small}
+
+\section{Experiments and findings}
 
 \begin{frame}
 \centering

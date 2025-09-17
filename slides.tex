@@ -7,10 +7,10 @@
 \usecolortheme{beaver}
 \date[26 September 2025]{}
 
-\title[We did it Patrick! We fixed traffic!]{Unconventional reinforcement learning on traffic lights with SUMO}
+\title[SUMO, Curriculums and MARL]{Unconventional reinforcement learning on traffic lights with SUMO}
 \subtitle{Master Degree in Computer Science}
 % \author{Refolli~F.~865955}
-\author[RF 865955]{Francesco~Refolli\\[10mm]{\small Supervisor: Prof. Giuseppe Vizzari}}
+\author[R.F. 865955]{Francesco~Refolli\\[10mm]{\small Supervisor: Prof. Giuseppe Vizzari}}
 \logo{\includegraphics[height=2.5cm]{logo_unimib.pdf}}
 
 \newcommand{\putimage}[2] {
@@ -49,6 +49,11 @@
 \end{frame}
 
 \section{Introduction}
+\begin{frame}
+\centering
+\Huge
+Introduction
+\end{frame}
 
 \begin{frame}
   \frametitle{Problem statement}
@@ -105,6 +110,14 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{The scenario}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/sumo-bassini.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
 \frametitle{The Agent Model}
   \begin{columns}
     \begin{column}{0.6\textwidth}
@@ -151,7 +164,74 @@
 \end{columns}
 \end{frame}
 
+\section{Curriculum Learning}
+\begin{frame}
+\centering
+\Huge
+Curriculum Learning
+\end{frame}
+
+\begin{frame}
+\frametitle{Experience Engineering}
+  \begin{itemize}
+    \item Unlike classic RL problems like CartPole, here the configured demand over time of the system is actually a hyperparameter.
+    \item In order to train and evaluate the agents a schematic of demand ("dataset") shall be created resembling both daily conditions and abnormal conditions.
+    \item Since there are many junctions, many entry/exit points and each flow intensity can vary significantly, the complexity of a scenario is high.
+  \end{itemize}
+  
+  Two approaches:
+  \begin{itemize}
+    \item \textbf{Monolithic}: systematically train the agents against almost all combinations of subtaks.
+    \item \textbf{Curriculum}: train the agents against each subtask in isolation expecting the agents to generalize their knowledge.
+  \end{itemize}
+  
+  %\textcolor{SeaGreen}{
+  %\textcolor{SeaGreen}{
+  %Bonus:
+  %\begin{itemize}
+  %  \item \textcolor{SeaGreen}{\textbf{Incremental learning}: train the agents with examples of increasing complexity/intensity.}
+  %  \item \textcolor{CadetBlue}{\textbf{Experience replay}: record $({S}_{t-1}, {A}_{t-1}, {S}_{t-1}, {R}_{t-1})$ samples and present them to the agents in random batches.}
+  %\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A modular learning framework}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/curriculum-vs-monolithic.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experimental results}
+  \begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/dataset-radar.png}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item TODO
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Qualitative results}
+TODO
+
+questa slide mostra un confronto qualitativo dell'efficacia dei tre dataset
+\end{frame}
+
 \section{Multi Agent Learning}
+\begin{frame}
+\centering
+\Huge
+Multi Agent Learning
+\end{frame}
 
 \begin{frame}
 \frametitle{Multi Agent Learning}
@@ -231,6 +311,23 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{Experimental results}
+  \begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/obs-sharing-radar.png}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item TODO
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
 \frametitle{Reward sharing}
 
   {\footnotesize
@@ -259,14 +356,28 @@
   \end{columns}
 \end{frame}
 
-\section{Curriculum Learning}
+\begin{frame}
+\frametitle{Experimental results}
+  \begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/rew-sharing-radar.png}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item TODO
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
 
 \begin{frame}
-\frametitle{Experience Engineering}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/curriculum-vs-monolithic.png}
-  \end{figure}
+\frametitle{Qualitative results}
+TODO
+
+questa slide mostra un confronto qualitativo dell'efficacia di usare o meno lo sharing su obs/rew 
 \end{frame}
 
 %[fragile]
@@ -277,7 +388,28 @@
 %   \end{verbatim}
 % \end{small}
 
-\section{Experiments and findings}
+\section{Conclusions}
+\begin{frame}
+\centering
+\Huge
+Conclusions
+\end{frame}
+
+\begin{frame}
+\frametitle{A matter of perspective}
+TODO
+
+questa slide contiene un confronto quantitativo tra priority, fixed, dql .. etc
+l'idea e' mostrare che il dql e' aktually migliore degli altri e che i miglioramenti non sono seghe mentali
+\end{frame}
+
+\begin{frame}
+\frametitle{A matter of perspective}
+TODO
+
+questa slide contiene un confronto qualitativo tra priority, fixed, dql .. etc
+l'idea e' mostrare che il dql e' aktually migliore degli altri e che i miglioramenti non sono seghe mentali
+\end{frame}
 
 \begin{frame}
 \centering

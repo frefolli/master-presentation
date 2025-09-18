@@ -220,10 +220,27 @@ Curriculum Learning
 \end{frame}
 
 \begin{frame}
-\frametitle{Qualitative results}
-TODO
-
-questa slide mostra un confronto qualitativo dell'efficacia dei tre dataset
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/demo.clr.mon.png}
+    \caption{Monolithic}
+  \end{figure}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/demo.clr.cd.png}
+        \caption{Curriculum Daily}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/demo.clr.cdd.png}
+        \caption{Curriculum Daily + Disruption}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \section{Multi Agent Learning}
@@ -374,10 +391,44 @@ Multi Agent Learning
 \end{frame}
 
 \begin{frame}
-\frametitle{Qualitative results}
-TODO
+  \begin{itemize}
+    \item With sharing emerges a green-wave phenomenon
+  \end{itemize}
 
-questa slide mostra un confronto qualitativo dell'efficacia di usare o meno lo sharing su obs/rew 
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.85\textwidth]{figures/dql-shared.0.png}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.85\textwidth]{figures/dql-shared.1.png}
+      \end{figure}
+    \end{column}
+  \end{columns}
+
+  \vspace{3mm}
+  \begin{itemize}
+    \item Without sharing flows are more segmented
+  \end{itemize}
+  
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.85\textwidth]{figures/dql-unshared.0.png}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.85\textwidth]{figures/dql-unshared.1.png}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %[fragile]
@@ -396,19 +447,77 @@ Conclusions
 \end{frame}
 
 \begin{frame}
-\frametitle{A matter of perspective}
-TODO
+  \frametitle{Take-away}
+  Conclusions:
+  \begin{itemize}
+    \item Curriculum based approaches are simple and cheap but as effective as exhaustive approaches
+    \item RL-based traffic light control benefits from Multi Agent Learning
+  \end{itemize}
 
-questa slide contiene un confronto quantitativo tra priority, fixed, dql .. etc
-l'idea e' mostrare che il dql e' aktually migliore degli altri e che i miglioramenti non sono seghe mentali
+  Future work:
+  \begin{itemize}
+    \item Experiment with wider networks and longer training times
+    \item Apply transfer learning to heterogeneous agents
+    \item Experiment with Experience Replay
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering
+\Huge
+Bonus
 \end{frame}
 
 \begin{frame}
 \frametitle{A matter of perspective}
-TODO
+  \begin{columns}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\textwidth]{figures/total-radar.png}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{itemize}
+      \item TODO
+    \end{itemize}
+  \end{column}
+\end{columns}
+\end{frame}
 
-questa slide contiene un confronto qualitativo tra priority, fixed, dql .. etc
-l'idea e' mostrare che il dql e' aktually migliore degli altri e che i miglioramenti non sono seghe mentali
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/demo.dql-d-dwt.png}
+        \caption{DQL Agent}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.0\textwidth]{figures/demo.priority.png}
+        \caption{Unregulated}
+      \end{figure}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.00\textwidth]{figures/demo.fixed15.png}
+        \caption{Fixed Cycle 15s}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=1.00\textwidth]{figures/demo.fixed60.png}
+        \caption{Fixed Cycle 60s}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}

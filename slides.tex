@@ -123,9 +123,9 @@ Introduction
     \begin{column}{0.6\textwidth}
     {\small
     \begin{itemize}
-      \item Each agent can control one intersection and at each step (every 5 seconds) it can choose the next phase of the intersection.
-      \item Every action is automatically enforced by TrafficSignal with also an intermediate yellow phase.
-      \item It receives an observation of the current condition and a reward proportional to the goodness of its behaviour.
+      \item Each agent can control one intersection and at each step (every 5 seconds) it can choose the next phase of the intersection
+      \item Every action is automatically enforced by TrafficSignal with also an intermediate yellow phase
+      \item It receives an observation of the current condition and a reward proportional to the goodness of its behaviour
       \item If the agent is "smart", it uses the collected data to improve itself!
     \end{itemize}}
     \end{column}
@@ -174,23 +174,23 @@ Curriculum Learning
 \begin{frame}
 \frametitle{Experience Engineering}
   \begin{itemize}
-    \item Unlike classic RL problems like CartPole, here the configured demand over time of the system is actually a hyperparameter.
-    \item In order to train and evaluate the agents a schematic of demand ("dataset") shall be created resembling both daily conditions and abnormal conditions.
-    \item Since there are many junctions, many entry/exit points and each flow intensity can vary significantly, the complexity of a scenario is high.
+    \item Unlike classic RL problems like CartPole, here the configured demand over time of the system is actually a hyperparameter
+    \item In order to train and evaluate the agents a schematic of demand ("dataset") shall be created resembling both daily conditions and abnormal conditions
+    \item Since there are many junctions, many entry/exit points and each flow intensity can vary significantly, the complexity of a scenario is high
   \end{itemize}
   
   Two approaches:
   \begin{itemize}
-    \item \textbf{Monolithic}: systematically train the agents against almost all combinations of subtaks.
-    \item \textbf{Curriculum}: train the agents against each subtask in isolation expecting the agents to generalize their knowledge.
+    \item \textbf{Monolithic}: systematically train the agents against almost all combinations of subtasks
+    \item \textbf{Curriculum}: train the agents against each subtask in isolation expecting the agents to generalize their knowledge
   \end{itemize}
   
   %\textcolor{SeaGreen}{
   %\textcolor{SeaGreen}{
   %Bonus:
   %\begin{itemize}
-  %  \item \textcolor{SeaGreen}{\textbf{Incremental learning}: train the agents with examples of increasing complexity/intensity.}
-  %  \item \textcolor{CadetBlue}{\textbf{Experience replay}: record $({S}_{t-1}, {A}_{t-1}, {S}_{t-1}, {R}_{t-1})$ samples and present them to the agents in random batches.}
+  %  \item \textcolor{SeaGreen}{\textbf{Incremental learning}: train the agents with examples of increasing complexity/intensity}
+  %  \item \textcolor{CadetBlue}{\textbf{Experience replay}: record $({S}_{t-1}, {A}_{t-1}, {S}_{t-1}, {R}_{t-1})$ samples and present them to the agents in random batches}
   %\end{itemize}
 \end{frame}
 
@@ -213,7 +213,11 @@ Curriculum Learning
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}
-      \item TODO
+      \item CDD reaches performances comparable with the Monolithic one (MON)
+      \item Impressive because CDD datasets are actually less intensive and much simpler
+      \item Without disruptive events (CD), agents are unable to deal with though conditions
+      \item Differences in SPD, WT and AWT are not significant
+      \item Even the difference in arrival/departure rate is minimal ($< 0.1\%$)
     \end{itemize}
   \end{column}
 \end{columns}
@@ -255,7 +259,7 @@ Multi Agent Learning
 
   {\footnotesize
   \begin{itemize}
-    \item No agent is isoled, they are all part of a whole and they influence each other with their own behaviour.
+    \item No agent is isoled, they are all part of a whole and they influence each other with their own behaviour
     \item What if an agent can \textit{sense} its surrounding area by sharing observations with neighbours?
     \item What if an agent is \textit{rewarded} for its influence on surrounding area by sharing rewards with neighbours?
   \end{itemize}
@@ -302,9 +306,9 @@ Multi Agent Learning
 
   {\footnotesize
   \begin{itemize}
-    \item The state $S$ of an agent is computed through two dinstict observation functions $f_{int}, f_{ext}$ meaning respectively the internal state and external state. \\
-    \item The state of an agent $x$ is a concatenation of $f_{int}(x)$ and $f_{ext}(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours. \\
-    \item It ws chosen to use the Density function as $f_{int}$ because, among the observation functions where the agent can only see itself, it produced the best results.
+    \item The state $S$ of an agent is computed through two dinstict observation functions $f_{int}, f_{ext}$ meaning respectively the internal state and external state \\
+    \item The state of an agent $x$ is a concatenation of $f_{int}(x)$ and $f_{ext}(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours \\
+    \item It ws chosen to use the Density function as $f_{int}$ because, among the observation functions where the agent can only see itself, it produced the best results
   \end{itemize}
   }
 
@@ -338,7 +342,9 @@ Multi Agent Learning
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}
-      \item TODO
+      \item Slight increase in performance when sharing phase
+      \item $svp$ saves $30s$ of AWT and nearly halves $WT$
+      \item Other parameters increase state size without actual benefits
     \end{itemize}
   \end{column}
 \end{columns}
@@ -349,8 +355,8 @@ Multi Agent Learning
 
   {\footnotesize
   \begin{itemize}
-    \item The reward $R$ of an agent is computed through one single reward function $f$ representing the condition of an intersection. \\
-    \item The state of an agent $x$ is a sum of $f(x)$ and $f(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours. \\
+    \item The reward $R$ of an agent is computed through one single reward function $f$ representing the condition of an intersection \\
+    \item The state of an agent $x$ is a sum of $f(x)$ and $f(y)$ for all $y \in N(x)$, where $N$ is a function mapping an agent with its neighbours \\
   \end{itemize}
   }
 
@@ -384,7 +390,10 @@ Multi Agent Learning
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}
-      \item TODO
+      \item Slight increase in performance when sharing $dawt$
+      \item Savings are modest: $-3\%$ in AWT and $-10\%$ in WT
+      \item The other reward functions are worse versions of their base
+      \item The only exception is $as$ which drastically improves but remains worse than the others
     \end{itemize}
   \end{column}
 \end{columns}
@@ -479,7 +488,9 @@ Bonus
   \end{column}
   \begin{column}{0.5\textwidth}
     \begin{itemize}
-      \item TODO
+      \item RL halves AWT and significantly lowers WT
+      \item Roughly $+10\%$ of throughput with respect to traditional systems
+      \item Faster pace fixed cycles are better than longer ones
     \end{itemize}
   \end{column}
 \end{columns}
